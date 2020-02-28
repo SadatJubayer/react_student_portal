@@ -1,5 +1,5 @@
 import React from 'react';
-import StudentPortal from './components/studentPortal';
+import StudentPortal from './studentPortal';
 
 function App() {
   return (
