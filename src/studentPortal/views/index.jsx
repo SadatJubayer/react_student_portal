@@ -41,9 +41,10 @@ export default class StudentViews extends React.Component {
     return (
       <div>
         <h4>Student List</h4>
-        <div>
-          Switch View:
+        <div class="alert alert-primary">
+          Choose View:
           <input
+            className="m-2"
             type="radio"
             name="view"
             checked={this.state.isListView}
@@ -52,6 +53,7 @@ export default class StudentViews extends React.Component {
           />
           List View
           <input
+            className="m-2"
             type="radio"
             name="table"
             checked={!this.state.isListView}

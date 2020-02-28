@@ -21,8 +21,10 @@ class StudentForm extends Component {
     }
 
     return (
-      <div>
-        {editable ? 'New Studnet' : 'Update'}
+      <div className="border border-primary p-5 mt-2">
+        <div className="alert alert-success text-center">
+          {editable ? 'Add Student Form' : 'Update Student Form'}
+        </div>
 
         <Formik
           initialValues={initialValues}
@@ -50,16 +52,28 @@ class StudentForm extends Component {
                   <option key={d}> {d} </option>
                 ))}
               </Field>
-              <button type="submit" className="btn btn-success">
-                {editable ? 'Update' : 'Create '}
-              </button>
-              <button
-                type="reset"
-                className="btn btn-danger"
-                onClick={this.props.handleReset}
-              >
-                REset
-              </button>
+
+              <div className="row">
+                <div className="col-sm-6">
+                  {' '}
+                  <button
+                    type="submit"
+                    className="btn btn-success btn-block m-2"
+                  >
+                    {editable ? 'Update' : 'Create '}
+                  </button>
+                </div>
+                <div className="col-sm-6">
+                  {' '}
+                  <button
+                    type="reset"
+                    className="btn btn-danger btn-block m-2"
+                    onClick={this.props.handleReset}
+                  >
+                    Reset
+                  </button>
+                </div>
+              </div>
             </Form>
           )}
         </Formik>
