@@ -2,12 +2,13 @@ import React, { Component } from 'react';
 import StudentViews from './views';
 import StudentFrom from './forms';
 
+import shortid from 'shortid';
+
+import students from './data';
+
 class StudentPortal extends Component {
   state = {
-    students: [
-      { id: 'sdfsd', name: 'sadat', dept: 'CSE' },
-      { id: 'dfsdfsd', name: 'sadat', dept: 'CSE' }
-    ],
+    students: students,
     editable: false,
     selectedStudent: null
   };
@@ -30,6 +31,23 @@ class StudentPortal extends Component {
     }
   };
 
+  createStudent = student => {
+    student.id = shortid.apply();
+    const students = [...this.state.students, student];
+    this.setState({ students });
+  };
+
+  updateStudent = (student, id) => {
+    console.log(id, student);
+  };
+
+  handleReset = () => {
+    this.setState({
+      editable: false,
+      selectedStudent: null
+    });
+  };
+
   render() {
     const { students, editable, selectedStudent } = this.state;
 
@@ -45,6 +63,9 @@ class StudentPortal extends Component {
         <StudentFrom
           editable={this.state.editable}
           editableStudent={editableStudent}
+          createStudent={this.createStudent}
+          updateStudent={this.updateStudent}
+          handleReset={this.handleReset}
         />
         <StudentViews
           students={students}
