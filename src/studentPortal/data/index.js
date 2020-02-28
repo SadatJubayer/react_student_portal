@@ -15,4 +15,4 @@ for (let i = 0; i < 5; i++) {
   students.push(student);
 }
 
-export default students;
+export { students, DEPT };

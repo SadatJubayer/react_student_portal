@@ -4,7 +4,7 @@ import StudentFrom from './forms';
 
 import shortid from 'shortid';
 
-import students from './data';
+import { students } from './data';
 
 class StudentPortal extends Component {
   state = {
@@ -35,10 +35,22 @@ class StudentPortal extends Component {
     student.id = shortid.apply();
     const students = [...this.state.students, student];
     this.setState({ students });
+    this.handleReset();
   };
 
   updateStudent = (student, id) => {
-    console.log(id, student);
+    const students = [...this.state.students];
+
+    students.forEach(s => {
+      if (s.id === id) {
+        s.name = student.name;
+        s.dept = student.dept;
+      }
+    });
+
+    this.setState({ students });
+
+    this.handleReset();
   };
 
   handleReset = () => {

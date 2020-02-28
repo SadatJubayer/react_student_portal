@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { Formik, Field, Form } from 'formik';
 
-import students from '../data';
+import { DEPT } from '../data';
 
 class StudentForm extends Component {
   render() {
@@ -46,13 +46,9 @@ class StudentForm extends Component {
               />
               <Field as="select" name="dept" className="form-control">
                 <option>Select Department</option>
-                {students.map(s => {
-                  return (
-                    <option key={s.id} value={s.dept}>
-                      {s.dept}
-                    </option>
-                  );
-                })}
+                {DEPT.map(d => (
+                  <option key={d}> {d} </option>
+                ))}
               </Field>
               <button type="submit" className="btn btn-success">
                 {editable ? 'Update' : 'Create '}
