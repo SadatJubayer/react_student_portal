@@ -1,12 +1,12 @@
-import React from 'react';
+import React from "react";
 
-import ListView from './list-view';
-import TableView from './table-view';
+import ListView from "./list-view";
+import TableView from "./table-view";
 
 export default class StudentViews extends React.Component {
   state = {
     isListView: false,
-    view: 'list'
+    view: "list"
   };
 
   generateViews = () => {
@@ -33,7 +33,7 @@ export default class StudentViews extends React.Component {
   handleChange = e => {
     this.setState({
       view: e.target.value,
-      isListView: e.target.value === 'list'
+      isListView: e.target.value === "list"
     });
   };
 
@@ -41,7 +41,7 @@ export default class StudentViews extends React.Component {
     return (
       <div>
         <h4>Student List</h4>
-        <div class="alert alert-primary">
+        <div className="alert alert-primary">
           Choose View:
           <input
             className="m-2"

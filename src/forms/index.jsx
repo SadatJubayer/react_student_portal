@@ -1,7 +1,7 @@
-import React, { Component } from 'react';
-import { Formik, Field, Form } from 'formik';
+import React, { Component } from "react";
+import { Formik, Field, Form } from "formik";
 
-import { DEPT } from '../data';
+import { DEPT } from "../data";
 
 class StudentForm extends Component {
   render() {
@@ -12,8 +12,8 @@ class StudentForm extends Component {
       updateStudent
     } = this.props;
 
-    // Initail values
-    const initialValues = { name: '', dept: '' };
+    // Initial values
+    const initialValues = { name: "", dept: "" };
 
     if (editable) {
       initialValues.name = editableStudent.name;
@@ -23,7 +23,7 @@ class StudentForm extends Component {
     return (
       <div className="border border-primary p-5 mt-2">
         <div className="alert alert-success text-center">
-          {editable ? 'Add Student Form' : 'Update Student Form'}
+          {editable ? "Update Student" : "Add Student"}
         </div>
 
         <Formik
@@ -55,16 +55,16 @@ class StudentForm extends Component {
 
               <div className="row">
                 <div className="col-sm-6">
-                  {' '}
+                  {" "}
                   <button
                     type="submit"
                     className="btn btn-success btn-block m-2"
                   >
-                    {editable ? 'Update' : 'Create '}
+                    {editable ? "Update" : "Create "}
                   </button>
                 </div>
                 <div className="col-sm-6">
-                  {' '}
+                  {" "}
                   <button
                     type="reset"
                     className="btn btn-danger btn-block m-2"
