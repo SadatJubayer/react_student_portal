@@ -60,6 +60,14 @@ class App extends Component {
     });
   };
 
+  handleSearch = searchString => {
+    const newStudents = this.state.students.filter(student =>
+      student.name.toLowerCase().includes(searchString.toLocaleLowerCase())
+    );
+
+    this.setState({ students: newStudents });
+  };
+
   render() {
     const { students, editable, selectedStudent } = this.state;
 
@@ -78,6 +86,7 @@ class App extends Component {
           createStudent={this.createStudent}
           updateStudent={this.updateStudent}
           handleReset={this.handleReset}
+          handleSearch={this.handleSearch}
         />
         <StudentViews
           students={students}

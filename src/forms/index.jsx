@@ -4,6 +4,10 @@ import { Formik, Field, Form } from "formik";
 import { DEPT } from "../data";
 
 class StudentForm extends Component {
+  state = {
+    searchString: ""
+  };
+
   render() {
     const {
       editable,
@@ -25,7 +29,6 @@ class StudentForm extends Component {
         <div className="alert alert-success text-center">
           {editable ? "Update Student" : "Add Student"}
         </div>
-
         <Formik
           initialValues={initialValues}
           enableReinitialize={true}
@@ -77,6 +80,15 @@ class StudentForm extends Component {
             </Form>
           )}
         </Formik>
+        <input
+          type="text"
+          name="search"
+          className="form-control"
+          value={this.state.searchString}
+          placeholder="Search Here..."
+          onChange={e => this.setState({ searchString: e.target.value })}
+          onKeyUp={() => this.props.handleSearch(this.state.searchString)}
+        />
       </div>
     );
   }
