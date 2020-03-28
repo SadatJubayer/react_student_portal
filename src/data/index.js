@@ -2,7 +2,7 @@ import faker from "faker";
 
 import shortid from "shortid";
 
-const students = [];
+const initialStudents = [];
 
 const DEPT = ["CSE", "EEE", "IPE", "BBA", "ARCH"];
 
@@ -12,7 +12,7 @@ for (let i = 0; i < 5; i++) {
   student.name = faker.name.findName();
   const randomIndex = Math.floor(Math.random() * DEPT.length);
   student.dept = DEPT[randomIndex];
-  students.push(student);
+  initialStudents.push(student);
 }
 
-export { students, DEPT };
+export { initialStudents, DEPT };

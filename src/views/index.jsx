@@ -1,17 +1,13 @@
-import React from "react";
+import React, { useState } from "react";
 
 import ListView from "./list-view";
 import TableView from "./table-view";
 
-export default class StudentViews extends React.Component {
-  state = {
-    isListView: false,
-    view: "list"
-  };
+function StudentViews({ students, handleEdit, handleDelete }) {
+  const [isListView, setIsListView] = useState(false);
 
-  generateViews = () => {
-    const { students, handleEdit, handleDelete } = this.props;
-    if (this.state.isListView) {
+  const generateViews = () => {
+    if (isListView) {
       return (
         <ListView
           students={students}
@@ -30,54 +26,104 @@ export default class StudentViews extends React.Component {
     }
   };
 
-  handleChange = e => {
-    this.setState({
-      view: e.target.value,
-      isListView: e.target.value === "list"
-    });
+  const handleChange = e => {
+    setIsListView(!isListView);
   };
 
-  render() {
-    return (
-      <div>
-        <h4>Student List</h4>
-        <div className="alert alert-primary">
-          Choose View:
-          <input
-            className="m-2"
-            type="radio"
-            name="view"
-            checked={this.state.isListView}
-            value="list"
-            onChange={this.handleChange}
-          />
-          List View
-          <input
-            className="m-2"
-            type="radio"
-            name="table"
-            checked={!this.state.isListView}
-            value="table"
-            onChange={this.handleChange}
-          />
-          Table View
-        </div>
-
-        {this.generateViews()}
+  return (
+    <div>
+      <h4>Student List</h4>
+      <div className="alert alert-primary">
+        Choose View:
+        <input
+          className="m-2"
+          type="radio"
+          name="view"
+          checked={isListView}
+          value="list"
+          onChange={handleChange}
+        />
+        List View
+        <input
+          className="m-2"
+          type="radio"
+          name="table"
+          checked={!isListView}
+          value="table"
+          onChange={handleChange}
+        />
+        Table View
       </div>
-    );
-  }
+
+      {generateViews()}
+    </div>
+  );
 }
 
-// export default function StudentViews({ students }) {
-//   console.log(students);
-//   return (
-//     <div>
-//       <h4>List View</h4>
-//       <ListView students={students} />
+export default StudentViews;
 
-//       <h4>Table View</h4>
-//       <TableView students={students} />
-//     </div>
-//   );
+// export default class StudentViews extends React.Component {
+//   state = {
+//     isListView: false,
+//     view: "list"
+//   };
+
+//   generateViews = () => {
+//     const { students, handleEdit, handleDelete } = this.props;
+//     if (this.state.isListView) {
+//       return (
+//         <ListView
+//           students={students}
+//           handleEdit={handleEdit}
+//           handleDelete={handleDelete}
+//         />
+//       );
+//     } else {
+//       return (
+//         <TableView
+//           students={students}
+//           handleEdit={handleEdit}
+//           handleDelete={handleDelete}
+//         />
+//       );
+//     }
+//   };
+
+//   handleChange = e => {
+//     this.setState({
+//       view: e.target.value,
+//       isListView: e.target.value === "list"
+//     });
+//   };
+
+//   render() {
+//     return (
+//       <div>
+//         <h4>Student List</h4>
+//         <div className="alert alert-primary">
+//           Choose View:
+//           <input
+//             className="m-2"
+//             type="radio"
+//             name="view"
+//             checked={this.state.isListView}
+//             value="list"
+//             onChange={this.handleChange}
+//           />
+//           List View
+//           <input
+//             className="m-2"
+//             type="radio"
+//             name="table"
+//             checked={!this.state.isListView}
+//             value="table"
+//             onChange={this.handleChange}
+//           />
+//           Table View
+//         </div>
+
+//         {this.generateViews()}
+//       </div>
+//     );
+//   }
 // }

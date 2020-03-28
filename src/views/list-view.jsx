@@ -1,5 +1,6 @@
 import React from "react";
-const ListView = ({ students, handleEdit, handleDelete }) => {
+
+function ListView({ students, handleEdit, handleDelete }) {
   return (
     <ul className="list-group container">
       <div className="row">
@@ -37,6 +38,6 @@ const ListView = ({ students, handleEdit, handleDelete }) => {
       </div>
     </ul>
   );
-};
+}
 
 export default ListView;
